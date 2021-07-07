@@ -1,12 +1,24 @@
 import React, { useState } from 'react'
+import Button from '../Button'
 
-export const PizzaBlock = ({pizza}) => {
+export const PizzaBlock = ({pizza, onClickAddPizza}) => {
    const [activeType,setActiveType]=useState(0)
    const [activeSize,setActiveSize]=useState(26)
 
-    const typeNames=['тонкая','традиционная']
+    const typeNames=['тонкое','традиционное']
     const avaliableSizes=[26,30,40]
-
+    function onAddPizza  ()  {
+       const obj= {
+        id:this.id,
+        imageUrl:this.id,
+        price:this.price,
+        type:typeNames[activeType],
+        size:avaliableSizes[activeSize]
+       }
+       onClickAddPizza(obj)
+       
+      
+    }
     return (
         <div className="pizza-block">
   <img
@@ -43,7 +55,10 @@ export const PizzaBlock = ({pizza}) => {
   </div>
   <div className="pizza-block__bottom">
     <div className="pizza-block__price">от {pizza.price} ₽</div>
-    <div className="button button--outline button--add">
+    <Button
+      className ='button--outline button--add'
+      onClick={onAddPizza.bind(pizza)}>
+    <div >
       <svg
         width="12"
         height="12"
@@ -59,6 +74,8 @@ export const PizzaBlock = ({pizza}) => {
       <span>Добавить</span>
       <i>2</i>
     </div>
+    </Button>
+    
     </div>
     </div>
     )

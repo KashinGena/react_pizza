@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
 import { setCategory, setOrderBy } from '../redux/actions/filter';
 import {filterPizzas} from '../redux/actions/pizza'
+import {addPizzaToCart} from '../redux/actions/cart'
 
 
 const categoryNames = [ 'Все','Мясные','Вегетарианская','Гриль','Острые','Закрытые']
@@ -31,8 +32,12 @@ export const Home = () => {
     if (pizzas.length!==0)
     dispatch(filterPizzas(category,orderBy))
     
-  },[orderBy])
-  console.log('render');
+  },[category,orderBy])
+  
+  const onAddPizza = useCallback((pizza) => {
+     dispatch(addPizzaToCart(pizza))
+    console.log(pizza)
+  },[])
   
     return (
         <div className="content">
@@ -50,7 +55,7 @@ export const Home = () => {
           <div className="content__items">
             {pizzas && pizzas.map((pizza,index) => {
                 return (
-                    <PizzaBlock key={pizza.index} pizza={pizza}/>
+                    <PizzaBlock key={pizza.index} pizza={pizza} onClickAddPizza={onAddPizza}/>
                 )
             })}
       </div>

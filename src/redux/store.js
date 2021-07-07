@@ -1,11 +1,13 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
 import filterReducer from './reducers/filter'
 import pizzaReducer from './reducers/pizza'
+import cartReducer from './reducers/cart'
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
     filterReducer,
-    pizzaReducer
+    pizzaReducer,
+    cartReducer
 })
 const composeEnhancers =
   typeof window === 'object' &&
