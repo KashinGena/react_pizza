@@ -6,7 +6,6 @@ import React from 'react'
 import { Home } from './pages/Home';
 import { Cart } from './pages/Cart';
 import { Route } from 'react-router-dom';
-import axios from 'axios';
 import { useDispatch } from 'react-redux'
 import {fetchPizzas} from './redux/actions/pizza'
 
@@ -14,10 +13,13 @@ function App() {
   const dispatch = useDispatch()
 
 
+
   React.useEffect(() => {
     dispatch(fetchPizzas())
     
   },[])
+
+
 
   return (
     <div className="wrapper">
