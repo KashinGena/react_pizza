@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 
-export const SortPopup = ({items}) => {
+export const SortPopup = React.memo(({items}) => {
   const [visiblePopup,setVisiblePopup]=useState(false);
   const [activeSort,setActiveSort]=useState(0);
   const sortRef=useRef(null);
@@ -60,4 +60,4 @@ export const SortPopup = ({items}) => {
         </div>}
       </div>
     )
-}
+})

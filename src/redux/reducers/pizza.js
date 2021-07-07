@@ -3,7 +3,7 @@ const initialState = {
     isLoaded:false
 }
 
- const pizza = (state= initialState, action) => {
+ const pizza = (state = initialState, action) => {
     switch(action.type) {
         case ('GET_ITEMS'):
             return {
